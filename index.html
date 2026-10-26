@@ -279,6 +279,53 @@ if (canHover) {
   });
 }
 
+/* Soft hover sound (synthesized, no audio file needed) */
+let audioCtx = null, lastPlay = 0;
+
+function unlockAudio(){
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+}
+['pointerdown','keydown','touchstart'].forEach(ev =>
+  addEventListener(ev, unlockAudio, { once: false, passive: true })
+);
+
+function softTick(freq){
+  if (!audioCtx || audioCtx.state !== 'running') return;
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const now = audioCtx.currentTime;
+  if (now - lastPlay < 0.15) return;
+  lastPlay = now;
+
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(freq, now);
+  osc.frequency.exponentialRampToValueAtTime(freq * 1.25, now + 0.12);
+
+  filter.type = 'lowpass';
+  filter.frequency.value = 1400;
+
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.035, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+  osc.connect(filter).connect(gain).connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.25);
+}
+
+if (canHover) {
+  cards.forEach((card, i) => {
+    card.addEventListener('mouseenter', () => softTick(i === 0 ? 523 : 659));
+  });
+}
+
 /* Rising ember particles */
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
