@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Günaydın Bakı</title>
+<title>Gunaydin Baku</title>
 <link rel="icon" type="image/png" href="favicon.png">
 
 <style>
@@ -28,7 +28,7 @@ body{
     padding:2vh 0;
 }
 
-/* Hərəkət edən işıq ləkələri */
+/* Moving light blobs */
 .glow{
     position:fixed;
     border-radius:50%;
@@ -40,7 +40,7 @@ body{
 .glow.a{width:420px;height:420px;background:#ff7a18;top:-120px;left:-100px;animation:drift 14s ease-in-out infinite alternate}
 .glow.b{width:360px;height:360px;background:#c2410c;bottom:-120px;right:-80px;animation:drift 18s ease-in-out infinite alternate-reverse}
 
-/* Qalxan buxar / ulduz hissəcikləri */
+/* Rising ember particles */
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 
 .container{
@@ -108,7 +108,7 @@ body{
     filter:brightness(.78) saturate(1.05);
 }
 
-/* Kursoru izləyən işıq */
+/* Cursor-following light */
 .menu::before{
     content:"";
     position:absolute;
@@ -120,7 +120,7 @@ body{
     background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(255,190,110,.38), transparent 70%);
 }
 
-/* Parıltı zolağı */
+/* Shine sweep */
 .menu::after{
     content:"";
     position:absolute;
@@ -224,29 +224,29 @@ body{
 <div class="container">
 
     <div class="logo-wrap">
-        <img src="logo.png" class="logo" alt="Günaydın"
-             onerror="this.outerHTML='<div class=&quot;logo-text&quot;>Günaydın</div>'">
+        <img src="logo.png" class="logo" alt="Gunaydin"
+             onerror="this.outerHTML='<div class=&quot;logo-text&quot;>Gunaydin</div>'">
     </div>
 
     <div class="menus">
 
         <a href="/menu1/" class="menu">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" alt="Əsas menyu">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" alt="Main Menu">
             <div class="label">
                 <div>
-                    <h2>Əsas menyu</h2>
-                    <p>Səhər yeməkləri və daha çoxu</p>
+                    <h2>Main Menu</h2>
+                    <p>Breakfast and much more</p>
                 </div>
                 <span class="arrow">→</span>
             </div>
         </a>
 
         <a href="/menu2/" class="menu">
-            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1200&auto=format&fit=crop" alt="Steak menyusu">
+            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1200&auto=format&fit=crop" alt="Steak Menu">
             <div class="label">
                 <div>
-                    <h2>Steak menyusu</h2>
-                    <p>Közdə bişmiş ətlər</p>
+                    <h2>Steak Menu</h2>
+                    <p>Flame-grilled cuts</p>
                 </div>
                 <span class="arrow">→</span>
             </div>
@@ -257,7 +257,7 @@ body{
 </div>
 
 <script>
-/* 3D əyilmə + kursoru izləyən işıq */
+/* 3D tilt + cursor-following light */
 const cards = document.querySelectorAll('.menu');
 const canHover = window.matchMedia('(hover:hover)').matches;
 
@@ -279,7 +279,7 @@ if (canHover) {
   });
 }
 
-/* Yuxarı qalxan közərti hissəcikləri */
+/* Rising ember particles */
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let W, H, dots = [];
