@@ -6,35 +6,74 @@
 <title>Gunaydin Baku</title>
 
 <style>
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     background:#111;
-    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     font-family:Arial,sans-serif;
 }
 
 .container{
-    min-height:100vh;
+    text-align:center;
+    animation:fadeIn 1s ease;
+}
+
+.logo{
+    width:220px;
+    max-width:90%;
+    margin-bottom:50px;
+}
+
+.menus{
     display:flex;
+    flex-direction:column;
+    gap:25px;
     align-items:center;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
 }
 
-.menu-box{
-    width:350px;
-    position:relative;
-}
-
-.menu-box img{
-    width:100%;
+.menu{
     display:block;
 }
 
-.menu-link{
-    position:absolute;
-    inset:0;
+.menu img{
+    width:550px;
+    max-width:90vw;
+    border-radius:8px;
+    transition:.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.menu:hover img{
+    transform:scale(1.03);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+    .logo{
+        width:180px;
+    }
+
+    .menu img{
+        width:95vw;
+    }
 }
 </style>
 </head>
@@ -42,14 +81,18 @@ body{
 
 <div class="container">
 
-    <div class="menu-box">
-        <img src="menu1.jpg" alt="Main Menu">
-        <a href="menu1.pdf" class="menu-link"></a>
-    </div>
+    <img src="logo.png" class="logo" alt="Gunaydin">
 
-    <div class="menu-box">
-        <img src="menu2.jpg" alt="Steak Menu">
-        <a href="menu2.pdf" class="menu-link"></a>
+    <div class="menus">
+
+        <a href="/menu1/" class="menu">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" alt="Main Menu">
+        </a>
+
+        <a href="/menu2/" class="menu">
+            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1200&auto=format&fit=crop" alt="Steak Menu">
+        </a>
+
     </div>
 
 </div>
