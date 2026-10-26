@@ -33,9 +33,9 @@ Then visit `http://localhost:8000`.
 
 ## License
 
-The source code is public so you can read it, learn from it, and use it for personal, educational, or other non-commercial purposes.
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0). You can read the code, learn from it, and use it for personal, educational, or other non-commercial purposes.
 
-**Commercial use is not allowed.** You may not use this code, in whole or in part, in a product or service that is sold, or to promote or operate a business, without written permission from the author.
+**Commercial use is not allowed** without written permission from the author.
 
 See the [LICENSE](LICENSE) file for the full terms.
 
